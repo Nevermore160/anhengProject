@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--configuration 核心配置文件-->
+<mapper namespace="com.anheng.dao.DistributionTrendMapper">
+
+    <insert id="addDistributionTrend" parameterType="com.anheng.pojo.DistributionTrend" useGeneratedKeys="true" keyProperty="id">
+        insert into safetyreport.distributionTrend (id, threatSeverity, eventCount, startTime) values(#{id}, #{threatSeverity}, #{eventCount}, #{startTime})
+    </insert>
+
+    <insert id="addAttackerAnalysis" parameterType="com.anheng.pojo.AttackerAnalysis" useGeneratedKeys="true" keyProperty="id">
+        insert into safetyreport.attackeranalysis
+        (id, killChain, srcAddress, srcGeoCountry, srcGeoAddress, eventCount, category, startTime, threatSeverity)
+        values
+        (#{id}, #{killChain}, #{srcAddress}, #{srcGeoCountry}, #{srcGeoAddress}, #{eventCount}, #{category}, #{startTime}, #{threatSeverity})
+    </insert>
+
+    <insert id="addAttackerTopN" parameterType="com.anheng.pojo.AttackerTopN" useGeneratedKeys="true" keyProperty="id">
+        insert into safetyreport.attackertopn
+        (id, killChain, deviceAssetSubType, subCategory, threatSeverity, modelType, eventCount, startTime)
+        values
+        (#{id}, #{killChain}, #{deviceAssetSubType}, #{subCategory}, #{threatSeverity}, #{modelType}, #{eventCount}, #{startTime})
+    </insert>
+
+    <insert id="addDisposalSuggestions" parameterType="com.anheng.pojo.DisposalSuggestions" useGeneratedKeys="true" keyProperty="id">
+        insert into safetyreport.disposalsuggestions
+        (id, subCategory, suggestion, alarmDescription)
+        values
+        (#{id}, #{subCategory}, #{suggestion}, #{alarmDescription})
+    </insert>
+
+    <insert id="addVictim" parameterType="com.anheng.pojo.Victim" useGeneratedKeys="true" keyProperty="id">
+        insert into safetyreport.victim
+        (id, threatSeverity, subCategory, destGeoCountry, victimSecurityZone, eventCount, startTime)
+        values
+        (#{id}, #{threatSeverity}, #{subCategory}, #{destGeoCountry}, #{victimSecurityZone}, #{eventCount}, #{startTime})
+    </insert>
+
+</mapper>
